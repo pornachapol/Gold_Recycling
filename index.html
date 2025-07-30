@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGG Jewellery - เครื่องรีไซเคิลทองคำอัตโนมัติ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF6B6B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23FFD700" stop-opacity="0.1"/><stop offset="100%" stop-color="%23FFD700" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="150" fill="url(%23a)"/><circle cx="800" cy="300" r="100" fill="url(%23a)"/><circle cx="600" cy="700" r="120" fill="url(%23a)"/></svg>') no-repeat center;
+            background-size: cover;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B0000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+        }
+
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: #8B0000;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #8B0000;
+            text-align: center;
+        }
+
+        .feature-card p {
+            color: #666;
+            text-align: center;
+        }
+
+        .faq {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            padding: 100px 0;
+            color: white;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-answer.active {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #8B0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .stats {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer h4 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>NGG Jewellery</h1>
+            <p>เครื่องรีไซเคิลทองคำอัตโนมัติแห่งแรกของโลก</p>
+            <a href="#features" class="cta-button">เรียนรู้เพิ่มเติม</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">ทำไมต้อง NGG Jewellery?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>เทคโนโลยีขั้นสูง</h3>
+                    <p>ระบบ X-ray Fluorescence (XRF) ระดับอุตสาหกรรม ความแม่นยำ ±0.1%-0.5%</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>ปลอดภัยสูงสุด</h3>
+                    <p>กล้องวงจรปิดหลายมุม ตู้เซฟในตัว ระบบหลอมแบบปิดไร้เปลวไฟ</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>World Record</h3>
+                    <p>เครื่องรีไซเคิลทองคำอัตโนมัติแห่งแรกของโลก ได้รับการยอมรับระดับสากล</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>รวดเร็ว</h3>
+                    <p>ใช้เวลาเพียง 25-30 นาที ครบทุกขั้นตอนจากประเมิน หลอม จนถึงโอนเงิน</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Circular Economy</h3>
+                    <p>เสริมภาพลักษณ์ด้านความยั่งยืนและเศรษฐกิจหมุนเวียน</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>ดิจิทัลครบครัน</h3>
+                    <p>ระบบดิจิทัลโปร่งใส ทุกขั้นตอนบนหน้าจอเดียว</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">25-30</div>
+                    <div class="stat-label">นาที / ธุรกรรม</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">±0.1%</div>
+                    <div class="stat-label">ความแม่นยำ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1.5</div>
+                    <div class="stat-label">ตร.ม. พื้นที่</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">อัตโนมัติ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">คำถามที่พบบ่อย</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>เครื่องนี้คืออะไร?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>เป็นเครื่องอัตโนมัติสำหรับรีไซเคิลทองคำจากลูกค้า โดยลูกค้าสามารถนำทองมาใส่ ตรวจสอบคุณภาพ หลอม และรับเงินโอนผ่านระบบดิจิทัลครบจบในเครื่องเดียว</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ข้อดีของเครื่องนี้สำหรับห้างคืออะไร?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• เสริมภาพลักษณ์ของศูนย์ฯ ด้านเทคโนโลยี & Circular Economy<br>
+                        • เพิ่มจุดสนใจ (Attraction Point)<br>
+                        • ลูกค้าได้ประสบการณ์ใหม่ แชร์ต่อในโซเชียล<br>
+                        • ขยายฐานลูกค้าใหม่โดยไม่กระทบร้านทองเดิม</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ระบบทำงานอัตโนมัติหรือไม่?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ตัวเครื่องสามารถทำงานอัตโนมัติได้ครบทุกขั้นตอน แต่เพื่อเสริมความปลอดภัยและประสบการณ์ลูกค้า จึงมีพนักงานประจำจุดคอยดูแลและให้ข้อมูล</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ลูกค้าใช้งานอย่างไร?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• ลงทะเบียนและยืนยันตัวตน<br>
+                        • ระบบประเมินทองคำ<br>
+                        • เมื่อยืนยันจะดำเนินการหลอมและโอนเงิน<br>
+                        • ใช้เวลาประมาณ 25–30 นาที</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ระบบปลอดภัยแค่ไหน?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• กล้องวงจรปิดหลายมุมภายในเครื่อง<br>
+                        • ตู้เซฟเก็บทองในตัว<br>
+                        • ระบบหลอมแบบปิด ไม่มีเปลวไฟ<br>
+                        • ระบบหล่อเย็น + ตัดไฟอัตโนมัติเมื่อเกิดความร้อนสูง</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>เครื่องถูกใช้งานจริงที่ไหนบ้าง?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>เครื่องจากผู้ผลิต Kinghood มีการติดตั้งใช้งานจริงแล้วในหลายประเทศ:<br>
+                        • เซี่ยงไฮ้ ปักกิ่ง เซินเจิ้น กวางโจว และเมืองใหญ่ในจีน<br>
+                        • ฮ่องกงและมาเก๊า ในเวอร์ชันที่รองรับลูกค้าต่างชาติ<br>
+                        • มีการนำเสนอในเวทีระดับโลก เช่น JWA Awards และได้รับความสนใจในฐานะ "Gold Recycling ATM"<br><br>
+                        <strong>อ้างอิง:</strong><br>
+                        • Global spotlight on Shenzhen gold enterprises' innovative technology: <a href="https://www.prnewswire.com/news-releases/global-spotlight-on-shenzhen-gold-enterprises-innovative-technology-302307954.html" target="_blank" style="color: #FFD700;">https://www.prnewswire.com/news-releases/global-spotlight-on-shenzhen-gold-enterprises-innovative-technology-302307954.html</a><br>
+                        • World's first Gold Recycling ATM – World Record: <a href="https://www.worldrecordacademy.org/2025/5/worlds-first-gold-recycling-atm-world-record-in-shanghai-china-425180" target="_blank" style="color: #FFD700;">https://www.worldrecordacademy.org/2025/5/worlds-first-gold-recycling-atm-world-record-in-shanghai-china-425180</a></p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>พื้นที่ต้องรองรับอะไรบ้าง?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• พื้นที่ 1.5 ตร.ม.<br>
+                        • ไฟฟ้า 3 เฟส 380V<br>
+                        • สาย LAN เชื่อมต่ออินเทอร์เน็ต<br>
+                        • ไม่มีพรมใต้เครื่อง</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>การดูแลเครื่องทำอย่างไร?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• มีระบบแจ้งเตือนเมื่อผิดปกติ<br>
+                        • รีโมตมอนิเตอร์สถานะแบบเรียลไทม์<br>
+                        • ทีมเทคนิคสามารถช่วยเหลือจากระยะไกลได้</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ลูกค้ารู้สึกอย่างไรเมื่อใช้งาน?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• ได้ประสบการณ์ใหม่ โปร่งใสทุกขั้นตอน<br>
+                        • หน้าจอแสดงสถานะชัดเจน<br>
+                        • หลายคนเลือกถ่ายวิดีโอแชร์บนโซเชียล</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ข้อมูลลูกค้ามีการจัดการอย่างไร?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• มีระบบ Audit Trail เก็บธุรกรรม<br>
+                        • ข้อมูลถูกจัดเก็บและประมวลผลตามแนวทาง Data Privacy<br>
+                        • ไม่เปิดเผยข้อมูลแก่บุคคลภายนอกโดยไม่ได้รับอนุญาต</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>ระบบตรวจสอบทองแม่นยำแค่ไหน?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>• ใช้เทคโนโลยี X-ray Fluorescence (XRF) ระดับอุตสาหกรรม<br>
+                        • ตรวจสอบทั้งก่อนและหลังหลอมทอง<br>
+                        • ความแม่นยำระดับ ±0.1%–0.5%<br>
+                        • การหลอมช่วยให้ทองเป็นเนื้อเดียวเพื่อการวัดที่แม่นยำ<br><br>
+                        <strong>อ้างอิง:</strong><br>
+                        • China's Gold Trade-In ATMs: <a href="https://www.jckonline.com/editorial-article/gold-trade-in-atms-china/" target="_blank" style="color: #FFD700;">https://www.jckonline.com/editorial-article/gold-trade-in-atms-china/</a><br>
+                        • Gold rush with Smart ATMs: <a href="https://recyclinginternational.com/commodities/non-ferrous-metals-recycling/recycling-atm-gold-rush-sweeps-beijing-hong-kong-and-shanghai/60656" target="_blank" style="color: #FFD700;">https://recyclinginternational.com/commodities/non-ferrous-metals-recycling/recycling-atm-gold-rush-sweeps-beijing-hong-kong-and-shanghai/60656</a><br>
+                        • ThermoFisher – Portable XRF Analyzer: <a href="https://www.thermofisher.com/us/en/home/industrial/spectroscopy-elemental-isotope-analysis/portable-analysis-material-id/portable-precious-metals-jewelry-analysis.html" target="_blank" style="color: #FFD700;">https://www.thermofisher.com/us/en/home/industrial/spectroscopy-elemental-isotope-analysis/portable-analysis-material-id/portable-precious-metals-jewelry-analysis.html</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>NGG Jewellery</h4>
+                    <p>เครื่องรีไซเคิลทองคำอัตโนมัติแห่งแรกของโลก นวัตกรรมเพื่ออนาคตที่ยั่งยืน</p>
+                </div>
+                <div>
+                    <h4>ติดต่อเราส</h4>
+                    <p>📞 โทร: 02-XXX-XXXX<br>
+                    📧 อีเมล: info@ngggold.com<br>
+                    🌐 เว็บไซต์: www.ngggold.com</p>
+                </div>
+                <div>
+                    <h4>ข้อมูลเทคนิค</h4>
+                    <p>• พื้นที่: 1.5 ตร.ม.<br>
+                    • ไฟฟ้า: 3 เฟส 380V<br>
+                    • อินเทอร์เน็ต: สาย LAN<br>
+                    • เวลา: 25-30 นาที/ครั้ง</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NGG Jewellery. สงวนลิขสิทธิ์.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animation to feature cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
